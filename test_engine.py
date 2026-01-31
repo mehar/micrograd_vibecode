@@ -1,5 +1,6 @@
 
 from engine import Value
+from nn import Neuron, Layer, MLP
 import math
 
 def test_sanity_check():
@@ -178,7 +179,78 @@ def test_backprop_sub():
     
     assert c.data == 2.0
     assert a.grad == 1.0
+    assert c.data == 2.0
+    assert a.grad == 1.0
     assert b.grad == -1.0
+
+def test_neuron():
+    nin = 3
+    n = Neuron(nin)
+    
+    # Check parameter count
+    assert len(n.parameters()) == nin + 1 # weights + bias
+    
+    # Check forward pass
+    x = [Value(1.0), Value(2.0), Value(3.0)]
+    out = n(x)
+    
+    # Output should be a Value and result of ReLU (>= 0)
+    assert isinstance(out, Value)
+    assert out.data >= 0
+    
+    # Check backward pass
+    out.backward()
+    # Gradients should be 1.0 (seed) or 0.0 (if relu inactive) for out
+    assert out.grad == 1.0
+
+def test_layer():
+    nin = 3
+    nout = 2
+    l = Layer(nin, nout)
+    
+    # Check parameter count
+    assert len(l.parameters()) == nout * (nin + 1)
+    
+    # Check forward pass
+    x = [Value(1.0), Value(2.0), Value(3.0)]
+    out = l(x)
+    
+    # Output should be a list of Values
+    assert isinstance(out, list)
+    assert len(out) == nout
+    assert all(isinstance(v, Value) for v in out)
+
+    # Check forward pass with single output
+    l_single = Layer(nin, 1)
+    out_single = l_single(x)
+    out_single = l_single(x)
+    assert isinstance(out_single, Value)
+
+def test_mlp():
+    nin = 3
+    nouts = [4, 4, 1]
+    m = MLP(nin, nouts)
+    
+    # Check parameter count
+    # Layer 1: 3->4 (4 * (3+1) = 16)
+    # Layer 2: 4->4 (4 * (4+1) = 20)
+    # Layer 3: 4->1 (1 * (4+1) = 5)
+    # Total: 16 + 20 + 5 = 41
+    assert len(m.parameters()) == 41
+    
+    # Check forward pass
+    x = [Value(1.0), Value(2.0), Value(3.0)]
+    out = m(x)
+    
+    # Output should be single Value (last layer has 1 output)
+    assert isinstance(out, Value)
+    
+    # Check backward pass
+    out.backward()
+    assert out.grad == 1.0
+
+
+
 
 
 
