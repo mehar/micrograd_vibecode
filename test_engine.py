@@ -69,3 +69,17 @@ def test_relu():
     b = Value(1.0)
     assert b.relu().data == 1.0
 
+def test_graph_structure():
+    a = Value(2.0)
+    b = Value(3.0)
+    c = a * b
+    
+    assert a.grad == 0.0
+    assert b.grad == 0.0
+    assert c.grad == 0.0
+    
+    assert a in c._prev
+    assert b in c._prev
+    assert c._op == "*"
+
+
