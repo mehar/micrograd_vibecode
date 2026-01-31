@@ -35,3 +35,7 @@ Run the unit tests:
 ```bash
 uv run pytest
 ```
+
+## Development History
+See [prompts.md](prompts.md) for the list of prompts used to generate this project.
+
