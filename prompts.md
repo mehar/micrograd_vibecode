@@ -46,5 +46,7 @@
 44. `git add`
 45. `git commit`
 46. `update tests and prompts`
+47. `git add commit push`
+
 
 
