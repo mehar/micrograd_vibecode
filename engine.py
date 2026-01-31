@@ -1,3 +1,5 @@
+import math
+
 class Value:
     def __init__(self, data, _children=(), _op=""):
         self.data = data
@@ -42,3 +44,8 @@ class Value:
 
     def __rtruediv__(self, other):
         return other * self**-1
+        
+    def relu(self):
+        out = Value(0 if self.data < 0 else self.data, (self,), 'ReLU')
+        return out
+

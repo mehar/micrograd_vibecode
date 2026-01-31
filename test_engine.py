@@ -62,3 +62,10 @@ def test_complex_expression():
     # (2 * 3 + 1) / 2 = 7 / 2 = 3.5
     res = (a * b + c) / a
     assert res.data == 3.5
+
+def test_relu():
+    a = Value(-1.0)
+    assert a.relu().data == 0.0
+    b = Value(1.0)
+    assert b.relu().data == 1.0
+
