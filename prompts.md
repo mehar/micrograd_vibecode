@@ -20,3 +20,18 @@
 18. `git add and commit`
 19. `git push`
 20. `capture the complete prompts till now and add to git, also update the readme`
+21. `add support for gradients and backpropagation`
+22. `run tests`
+23. `add tests`
+24. `update README`
+25. `update prompts`
+26. `git add`
+27. `git commit`
+28. `git push`
+29. `git add`
+30. `git revert prev commit`
+31. `git stash`
+32. `git revert prev commit`
+33. `1.` (push revert)
+34. `yes, update README and prompts`
+

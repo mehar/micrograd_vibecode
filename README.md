@@ -5,7 +5,10 @@ A tiny scalar Autograd engine (vibecode edition).
 ## Features
 - `Value` class for scalar operations.
 - Supports `+`, `-`, `*`, `/`, `**`.
+- Implements `relu` activation.
+- **Autograd Engine**: Supports backpropagation and gradient computation (`backward()`).
 - Implements basic arithmetic dunders for intuitive usage.
+
 
 ## Installation
 Requires Python 3.9+.
