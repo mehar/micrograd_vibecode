@@ -32,10 +32,10 @@
 30. `git revert prev commit`
 31. `git stash`
 32. `git revert prev commit`
-33. `1.` (push revert)
+33. `1.`
 34. `yes, update README and prompts`
-35. `git add .` (comment)
-36. `git commit Add backpropagation` (comment)
+35. `git add .`
+36. `git commit`
 37. `add tests for backprop`
 38. `Add a new Neuron implementation based on Value`
 39. `Add an implementation for Layer`
@@ -47,6 +47,4 @@
 45. `git commit`
 46. `update tests and prompts`
 47. `git add commit push`
-
-
-
+48. `clean up the prompts to be precise in the number of steps`
