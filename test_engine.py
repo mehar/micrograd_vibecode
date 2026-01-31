@@ -148,6 +148,39 @@ def test_sanity_check_complex():
     assert a.grad == 21.0
     assert b.grad == 16.0
 
+def test_backprop_pow():
+    a = Value(2.0)
+    b = a ** 3
+    b.backward()
+    # d(a^3)/da = 3a^2 = 3*4 = 12
+    assert b.data == 8.0
+    assert a.grad == 12.0
+
+def test_backprop_div():
+    a = Value(6.0)
+    b = Value(3.0)
+    c = a / b
+    c.backward()
+    
+    # c = a * b^-1
+    # dc/da = b^-1 = 1/3
+    # dc/db = -a * b^-2 = -6 / 9 = -2/3
+    
+    assert c.data == 2.0
+    assert abs(a.grad - (1.0/3.0)) < 1e-6
+    assert abs(b.grad - (-2.0/3.0)) < 1e-6
+
+def test_backprop_sub():
+    a = Value(5.0)
+    b = Value(3.0)
+    c = a - b
+    c.backward()
+    
+    assert c.data == 2.0
+    assert a.grad == 1.0
+    assert b.grad == -1.0
+
+
 
 
 
