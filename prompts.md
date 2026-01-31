@@ -34,4 +34,17 @@
 32. `git revert prev commit`
 33. `1.` (push revert)
 34. `yes, update README and prompts`
+35. `git add .` (comment)
+36. `git commit Add backpropagation` (comment)
+37. `add tests for backprop`
+38. `Add a new Neuron implementation based on Value`
+39. `Add an implementation for Layer`
+40. `add MultiLayerPerceptron`
+41. `how many layers in an MLP?`
+42. `update README for Neuron, Layer and MLP in different ways`
+43. `Add examples of using Neuron, Layer and MLP individually`
+44. `git add`
+45. `git commit`
+46. `update tests and prompts`
+
 
